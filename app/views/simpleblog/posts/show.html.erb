@@ -1,19 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<h2><%= @post.title %></h2>
+	<p class="small date"><%= @post.date_parsed %></p>
+	<p class="small categories">
+	  <%= raw @post.categories.map { |c| link_to c.title, category_path(c) }.join(', ') %>
+	</p>
 
-
-<h2> <%= @post.title %> </h2>
-
-<%= @post.content.html_safe %>
-
-<h3> Excerpt </h3>
-<p> <%= @post.excerpt %> </p>
-
-<div class="well well-small">
-  <% @post.categories.each do |c| %>
-    <%= link_to c.title, category_path(c) %>
-  <% end %>
+	<%= markdown(@post.content).html_safe %>
 </div>
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>

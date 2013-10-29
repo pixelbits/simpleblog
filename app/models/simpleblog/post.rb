@@ -5,6 +5,10 @@ module Simpleblog
     has_many :images
     accepts_nested_attributes_for :images
 
+    before_validation {
+      self.permalink = title.parameterize
+    }
+
     validates :title, uniqueness: true
     validates :content, :title, presence: true
     validates_inclusion_of :status, in: %w( draft public )
@@ -13,12 +17,20 @@ module Simpleblog
     scope :drafts,    -> { where status: :draft }
     scope :delayed,   -> { where "status = 'public' AND published_at >= '#{Time.now}'" }
 
+    def to_param
+      permalink
+    end
+
     def published?
       status == 'public' && published_at.past?
     end
 
     def delayed?
       status == 'public' && published_at.future?
+    end
+
+    def date_parsed
+      published_at.present? ? published_at.strftime("%d %B %Y") : ""
     end
 
   end

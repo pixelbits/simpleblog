@@ -11,12 +11,15 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
 //= require jquery.ui.datepicker
 
 application = new Object;
 
 application.datepicker = function(){
-  $('.datepicker').datepicker();
+  $(".datepicker").datepicker({
+    dateFormat: "yy-mm-dd"
+  });
 }
 
 

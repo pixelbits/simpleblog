@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.ui.datepicker
+//= require_tree .
 
 application = new Object;
 

@@ -3,7 +3,7 @@
   <head>
     <title>Simpleblog</title>
     <%= stylesheet_link_tag    "simpleblog/application", media: "all" %>
-    <%= javascript_include_tag "simpleblog/application" %>
+
     <%= csrf_meta_tags %>
 
     <%= yield :before %>
@@ -17,6 +17,7 @@
       <%= yield %>
     </div> <!-- .container -->
 
+    <%= javascript_include_tag "simpleblog/application" %>
     <%= yield :after %>
   </body>
 </html>

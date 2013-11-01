@@ -1,12 +1,3 @@
-<%= content_for :before do %>
-  <%= stylesheet_link_tag 'simpleblog/posts' %>
-<% end %>
-
-<%= content_for :after do %>
-  <%= javascript_include_tag 'simpleblog/posts' %>
-<% end %>
-
-
 <%= form_for(@post, :html => { multipart: true }) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
